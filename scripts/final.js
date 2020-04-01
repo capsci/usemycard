@@ -51,13 +51,27 @@ class Wallet {
             throw `Reward with id ${reward_id} does not exist`;
         this.cards[card_id].addReward(merchant_id, reward_id);
     }
+    getMerchants(merchantsLike) {
+        var merchants = new Set();
+        for(var store_id in this.stores) {
+            if(this.stores[store_id].matchingStore(merchantsLike)) {
+                merchants.add(store_id);
+                if(this.stores[store_id].category_id) merchants.add(this.stores[store_id].category_id);
+            }
+        }
+        for(var category_id in this.categories) {
+            if(this.categories[category_id].matchingCategory(merchantsLike)) {
+                merchants.add(category_id);
+            }
+        }
+        return [...merchants];
+    }
     getRewards(merchantsLike) {
-
         var selected = [];
-
+        var merchant_ids = this.getMerchants(merchantsLike);
         for(var card_id in this.cards) {
             var card = this.cards[card_id];
-            var rewards = card.getRewards(merchantsLike);
+            var rewards = card.getRewards(merchant_ids);
             for(var merchant_id in rewards) {
                 var reward_ids = rewards[merchant_id];
                 reward_ids.forEach((reward_id) => {
@@ -295,12 +309,18 @@ class Category {
     constructor(name) {
         this.name = name;
     }
+    matchingCategory(merchantsLike) {
+        return this.name.toUpperCase().includes(merchantsLike.toUpperCase());
+    }
 }
 
 class Store {
     constructor(name, category_id) {
         this.name = name;
         this.category_id = category_id;
+    }
+    matchingStore(merchantsLike) {
+        return this.name.toUpperCase().includes(merchantsLike.toUpperCase());
     }
 }
 
@@ -317,9 +337,12 @@ class Card {
             ? this.rewards[merchant_id].push(reward_id)
             : this.rewards[merchant_id] = [reward_id];
     }
-    getRewards(merchantsLike) {
-        var merchants = Util.matchingElements(merchantsLike, Object.keys(this.rewards));
-        return Util.values(merchants, this.rewards);
+    getRewards(merchants) {
+        var rewards = {};
+        merchants.forEach(merchant => {
+            if (this.rewards[merchant]) rewards[merchant] = this.rewards[merchant];
+        });
+        return rewards;
     }
     get name() {
         return this.provider + " " + this.product;
@@ -337,21 +360,6 @@ class Reward {
         this.startDate = (startDate) ? new Date(startDate) : "";
         this.endDate = (endDate) ? new Date(endDate) : "";
         this.note = note;
-    }
-}
-
-class Util {
-    static matchingElements(key, list) {
-        return list.filter(element => element.includes(key));
-    }
-    static values(keys, dictionary) {
-        var selected = {};
-        keys.forEach(key => {
-            if (key in dictionary) {
-                selected[key] = dictionary[key];
-            }
-        });
-        return selected;
     }
 }
 
