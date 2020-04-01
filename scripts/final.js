@@ -99,21 +99,27 @@ class Wallet {
         this.addCard('bofaDebit'   , 'Bank of America' , 'Debit Card', 'Debit');
 
         // Add all Categories
-        this.addCategory('airTravel'    , 'Air Travel');
-        this.addCategory('cab'          , 'Cabs & Taxis');
-        this.addCategory('entertainment', 'Entertainment');
-        this.addCategory('gasStation'   , 'Gas Stations');
-        this.addCategory('grocery'      , 'Grocery Stores');
-        this.addCategory('pharmacy'     , 'Pharmacy & Prespcriptions');
-        this.addCategory('rentalCar'    , 'Rental Cars');
-        this.addCategory('restaurant'   , 'Restaurant And Dining');
-        this.addCategory('wholesale'    , 'Wholesale Clubs');
+        this.addCategory('airTravel'         , 'Air Travel');
+        this.addCategory('cab'               , 'Cabs & Taxis');
+        this.addCategory('entertainment'     , 'Entertainment');
+        this.addCategory('gasStation'        , 'Gas Stations');
+        this.addCategory('grocery'           , 'Grocery Stores');
+        this.addCategory('pharmacy'          , 'Pharmacy & Prespcriptions');
+        this.addCategory('rentalCar'         , 'Rental Cars');
+        this.addCategory('restaurant'        , 'Restaurant And Dining');
+        this.addCategory('wholesale'         , 'Wholesale Clubs');
+        this.addCategory('travel'            , 'Travel');
+        this.addCategory('flightWithAirline' , 'Flights booked directly with airline');
+        this.addCategory('streaming'         , 'Streaming Services');
 
         // Add all Stores
         this.addStore('aerie', 'Aerie');
         this.addStore('amazon', 'Amazon.com');
+        this.addStore('amazonPrime', 'Amazon Prime', 'streaming');
         this.addStore('amc', 'AMC Theaters', 'entertainment');
+        this.addStore('americanEagle', 'American Eagle');
         this.addStore('athleta', 'Athleta');
+        this.addStore('autozone', 'AutoZone');
         this.addStore('bananaRepublic', 'Banana Republic');
         this.addStore('barnesNoble', 'Barnes & Noble');
         this.addStore('bathBodyWorks', 'Bath & Body Works');
@@ -121,11 +127,13 @@ class Wallet {
         this.addStore('chartHouse', 'Chart House Restaurants', 'restaurant');
         this.addStore('cheesecake', 'The Cheesecake Factory', 'restaurant');
         this.addStore('chipotle', 'Chipotle Mexican Grill', 'restaurant');
+        this.addStore('containerStore', 'The Container Store');
         this.addStore('crateBarrel', 'Crate & Barrel');
         this.addStore('cvs', 'CVS', 'pharmacy');
         this.addStore('daveBusters', 'Dave and Busters');
         this.addStore('dominos', 'Dominos', 'restaurant');
         this.addStore('express', 'Express');
+        this.addStore('fanatics', 'Fanatics');
         this.addStore('fandago', 'Fandago', 'entertainment');
         this.addStore('footLocker', 'Foot Locker');
         this.addStore('gamestop', 'GameStop');
@@ -137,6 +145,8 @@ class Wallet {
         this.addStore('ihop', 'IHOP', 'restaurant');
         this.addStore('itunes', 'iTunes');
         this.addStore('jcpenny', 'JcPenny');
+        this.addStore('justice', 'Justice');
+        this.addStore('kohls', "Kolh's");
         this.addStore('loews', "Loew's");
         this.addStore('lyft', 'Lyft', 'cab');
         this.addStore('marshalls', 'Marshalls');
@@ -146,11 +156,16 @@ class Wallet {
         this.addStore('nordstromRack', 'Nordstrom Rack');
         this.addStore('oldnavy', 'Old Navy');
         this.addStore('olivegarden', 'Olive Garden', 'restaurant');
+        this.addStore('onTheBorder', 'On The Border', 'restaurant');
         this.addStore('panerabread', 'Panera Bread', 'restaurant');
         this.addStore('paypal', 'Paypal');
         this.addStore('pfchang', "PF Chang's", 'restaurant');
+        this.addStore('rainforestCafe', 'Rainforest Cafe', 'restaurant');
+        this.addStore('rayban', 'RayBan');
         this.addStore('regal', 'Regal Cinemas', 'entertainment');
+        this.addStore('reginaPizzeria', 'Regina Pizzeria', 'restaurant');
         this.addStore('rei', 'REI');
+        this.addStore('rosaMexicano', 'Rosa Mexicano', 'restaurant');
         this.addStore('saks', 'Saks Fift Avenue');
         this.addStore('sephora', 'Sephora');
         this.addStore('shakeShack', 'ShakeShack', 'restaurant');
@@ -169,7 +184,7 @@ class Wallet {
         this.addStore('walgreens', 'Walgreens', 'pharmacy');
         this.addStore('walmart', 'Walmart');
         this.addStore('walmart.com', 'Walmart.com');
-        this.addStore('yarHouse', 'The Yard House', 'restaurant');
+        this.addStore('yardHouse', 'The Yard House', 'restaurant');
 
         // Add all Rewards
         this.addReward('2020_quater1', 'Cashback', '5%', '01-01-2020', '03-31-2020', 'Reward valid from Jan 1st 2020 - March 31st 2020');
@@ -181,10 +196,98 @@ class Wallet {
         this.addReward('4pts' , 'Points', '4pts/$', '', '', 'Earn 4 points for every dollar spent');
         this.addReward('3pts' , 'Points', '3pts/$', '', '', 'Earn 3 points for every dollar spent');
         this.addReward('2pts' , 'Points', '2pts/$', '', '', 'Earn 2 points for every dollar spent');
+        this.addReward('5pc'  , 'Cashback', '5%', '', '', 'Check card website for dates');
+        this.addReward('10pc' , 'Cashback', '10%', '', '', 'Check card website for dates');
+        this.addReward('5cb'  , 'Cashback', '$5 back', '', '', 'Check card website for dates');
 
         // Add rewards to card
         this.addRewardToCard('amexGold', 'cheesecake', 'amexDiningCredit');
+        this.addRewardToCard('amexGold', 'grubhub', 'amexDiningCredit');
+        this.addRewardToCard('amexGold', 'shakeShack', 'amexDiningCredit');
         this.addRewardToCard('amexGold', 'restaurant', '4pts');
+        this.addRewardToCard('amexGold', 'grocery', '4pts');
+        this.addRewardToCard('amexGold', 'flightWithAirline', '3pts');
+
+        this.addRewardToCard('discoverIt', 'gasStation', '2020_quater2');
+        this.addRewardToCard('discoverIt', 'uber', '2020_quater2');
+        this.addRewardToCard('discoverIt', 'lyft', '2020_quater2');
+        this.addRewardToCard('discoverIt', 'wholesale', '2020_quater2');
+        this.addRewardToCard('discoverIt', 'restaurant', '2020_quater3');
+        this.addRewardToCard('discoverIt', 'paypal', '2020_quater3');
+        this.addRewardToCard('discoverIt', 'amazon', '2020_quater4');
+        this.addRewardToCard('discoverIt', 'walmart.com', '2020_quater4');
+        this.addRewardToCard('discoverIt', 'target.com', '2020_quater4');
+        this.addRewardToCard('discoverIt', 'amc', 'giftCard');
+        this.addRewardToCard('discoverIt', 'aerie', 'giftCard');
+        this.addRewardToCard('discoverIt', 'americanEagle', 'giftCard');
+        this.addRewardToCard('discoverIt', 'athleta', 'giftCard');
+        this.addRewardToCard('discoverIt', 'autozone', 'giftCard');
+        this.addRewardToCard('discoverIt', 'bananaRepublic', 'giftCard');
+        this.addRewardToCard('discoverIt', 'barnesNoble', 'giftCard');
+        this.addRewardToCard('discoverIt', 'bathBodyWorks', 'giftCard');
+        this.addRewardToCard('discoverIt', 'bedBathBeyond', 'giftCard');
+        this.addRewardToCard('discoverIt', 'chartHouse', 'giftCard');
+        this.addRewardToCard('discoverIt', 'chipotle', 'giftCard');
+        this.addRewardToCard('discoverIt', 'crateBarrel', 'giftCard');
+        this.addRewardToCard('discoverIt', 'daveBusters', 'giftCard');
+        this.addRewardToCard('discoverIt', 'dominos', 'giftCard');
+        this.addRewardToCard('discoverIt', 'express', 'giftCard');
+        this.addRewardToCard('discoverIt', 'fandago', 'giftCard');
+        this.addRewardToCard('discoverIt', 'footLocker', 'giftCard');
+        this.addRewardToCard('discoverIt', 'gamestop', 'giftCard');
+        this.addRewardToCard('discoverIt', 'gap', 'giftCard');
+        this.addRewardToCard('discoverIt', 'groupon', 'giftCard');
+        this.addRewardToCard('discoverIt', 'homegoods', 'giftCard');
+        this.addRewardToCard('discoverIt', 'ihop', 'giftCard');
+        this.addRewardToCard('discoverIt', 'jcpenny', 'giftCard');
+        this.addRewardToCard('discoverIt', 'kohls', 'giftCard');
+        this.addRewardToCard('discoverIt', 'loews', 'giftCard');
+        this.addRewardToCard('discoverIt', 'marshalls', 'giftCard');
+        this.addRewardToCard('discoverIt', 'michales', 'giftCard');
+        this.addRewardToCard('discoverIt', 'nike', 'giftCard');
+        this.addRewardToCard('discoverIt', 'nordstrom', 'giftCard');
+        this.addRewardToCard('discoverIt', 'nordstromRack', 'giftCard');
+        this.addRewardToCard('discoverIt', 'oldnavy', 'giftCard');
+        this.addRewardToCard('discoverIt', 'olivegarden', 'giftCard');
+        this.addRewardToCard('discoverIt', 'pfchang', 'giftCard');
+        this.addRewardToCard('discoverIt', 'panerabread', 'giftCard');
+        this.addRewardToCard('discoverIt', 'rainforestCafe', 'giftCard');
+        this.addRewardToCard('discoverIt', 'rei', 'giftCard');
+        this.addRewardToCard('discoverIt', 'regal', 'giftCard');
+        this.addRewardToCard('discoverIt', 'saks', 'giftCard');
+        this.addRewardToCard('discoverIt', 'sephora', 'giftCard');
+        this.addRewardToCard('discoverIt', 'shutterfly', 'giftCard');
+        this.addRewardToCard('discoverIt', 'spotify', 'giftCard');
+        this.addRewardToCard('discoverIt', 'staples', 'giftCard');
+        this.addRewardToCard('discoverIt', 'starbucks', 'giftCard');
+        this.addRewardToCard('discoverIt', 'sunglassHut', 'giftCard');
+        this.addRewardToCard('discoverIt', 'tjmaxx', 'giftCard');
+        this.addRewardToCard('discoverIt', 'tgif', 'giftCard');
+        this.addRewardToCard('discoverIt', 'cheesecake', 'giftCard');
+        this.addRewardToCard('discoverIt', 'containerStore', 'giftCard');
+        this.addRewardToCard('discoverIt', 'homedepot', 'giftCard');
+        this.addRewardToCard('discoverIt', 'ulta', 'giftCard');
+        this.addRewardToCard('discoverIt', 'underArmour', 'giftCard');
+        this.addRewardToCard('discoverIt', 'yardHouse', 'giftCard');
+
+        this.addRewardToCard('citiPremiere', 'gasStation', '3pts');
+        this.addRewardToCard('citiPremiere', 'travel', '3pts');
+        this.addRewardToCard('citiPremiere', 'gasStation', '3pts');
+        this.addRewardToCard('citiPremiere', 'restaurant', '2pts');
+        this.addRewardToCard('citiPremiere', 'entertainment', '2pts');
+
+        this.addRewardToCard('chaseFreedom', 'grocery', '2020_quater2');
+        this.addRewardToCard('chaseFreedom', 'shakeShack', '10pc');
+        this.addRewardToCard('chaseFreedom', 'rayban', '10pc');
+        this.addRewardToCard('chaseFreedom', 'starbucks', '5pc');
+        this.addRewardToCard('chaseFreedom', 'rosaMexicano', '10pc');
+        this.addRewardToCard('chaseFreedom', 'onTheBorder', '10pc');
+        this.addRewardToCard('chaseFreedom', 'reginaPizzeria', '10pc');
+        this.addRewardToCard('chaseFreedom', 'fanatics', '5pc');
+        this.addRewardToCard('chaseFreedom', 'justice', '10pc');
+
+        this.addRewardToCard('bofaDebit', 'amazonPrime', '5cb');
+
     }
 }
 
