@@ -6,9 +6,9 @@ define(function() {
             throw new TypeError("Reward constructor cannot be called as a function.");
         }
         if((startDate) && isNaN(Date.parse(startDate)))
-            throw `Start Date '${start_date}' is not a valid date`;
+            throw `Start Date '${startDate}' is not a valid date`;
         if((endDate) && isNaN(Date.parse(endDate)))
-            throw `End Date '${end_date}' is not a valid date`;
+            throw `End Date '${endDate}' is not a valid date`;
         this.type = type;
         this.returnValue = returnValue;
         this.startDate = (startDate) ? new Date(startDate) : "";
